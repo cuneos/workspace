@@ -1,0 +1,26 @@
+{
+  "name": "@cuneos/entities",
+  "version": "0.0.0-semantic-release",
+  "type": "module",
+  "files": [
+    "dist/entities/**"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuneos/workspace.git",
+    "directory": "packages/entities"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "module": "./index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  }
+}

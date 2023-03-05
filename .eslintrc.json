@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nrwl/nx"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "layer:domain",
+                "onlyDependOnLibsWithTags": ["layer:domain"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@nrwl/nx/typescript", "prettier"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:@nrwl/nx/javascript", "prettier"],
+      "rules": {}
+    }
+  ]
+}

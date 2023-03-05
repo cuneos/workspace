@@ -1,0 +1,87 @@
+{
+  "name": "@cuneos/workspace",
+  "version": "0.0.0",
+  "description": "Enabler for build high-quality and scalable software",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nx affected --target=build --parallel",
+    "build:all": "nx run-many --target=build --all --parallel",
+    "test": "nx affected --target=test --parallel",
+    "test:all": "nx run-many --target=test --all --parallel",
+    "lint": "nx affected --target=lint --parallel",
+    "lint:all": "nx run-many --target=lint --all --parallel",
+    "lint:staged": "lint-staged",
+    "format": "nx format:write",
+    "format:check": "nx format:check",
+    "graph": "nx graph",
+    "prepare": "husky install",
+    "release": "nx affected --target=release"
+  },
+  "author": {
+    "name": "Stefan Karlsson",
+    "email": "iam@stefan-karlsson.se"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuneos/workspace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cuneos/workspace/issues"
+  },
+  "homepage": "https://github.com/cuneos/workspace#readme",
+  "keywords": [
+    "domain driven design",
+    "scalable software",
+    "high-quality software",
+    "software architecture",
+    "software design"
+  ],
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/config-nx-scopes": "^17.4.3",
+    "@commitlint/cz-commitlint": "^17.4.4",
+    "@commitlint/types": "^17.4.4",
+    "@nrwl/eslint-plugin-nx": "15.6.3",
+    "@nrwl/js": "^15.6.3",
+    "@nrwl/linter": "15.6.3",
+    "@nrwl/nx-cloud": "^15.1.1",
+    "@nrwl/vite": "^15.8.5",
+    "@nrwl/workspace": "^15.7.1",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.2",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "@vitest/coverage-c8": "~0.29.2",
+    "@vitest/ui": "~0.29.2",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "8.1.0",
+    "husky": "^8.0.3",
+    "jsdom": "~20.0.3",
+    "lint-staged": "^13.1.2",
+    "nx": "^15.8.5",
+    "open": "^8.4.1",
+    "prettier": "^2.8.4",
+    "semantic-release-npm-github-publish": "^1.5.4",
+    "semantic-release-plus": "^20.0.0",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-dts": "^1.7.2",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-tsconfig-paths": "^4.0.2",
+    "vitest": "^0.25.8"
+  },
+  "packageManager": "pnpm@7.26.3"
+}

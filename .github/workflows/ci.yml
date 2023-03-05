@@ -1,0 +1,36 @@
+name: Continuous Integration and Deployment
+
+on: [push, pull_request]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+  NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+  HUSKY: 0
+
+jobs:
+  quality-assure:
+    name: Quality Assure and Build
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+    with:
+      number-of-agents: 3
+      init-commands: |
+        pnpm exec nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+      parallel-commands: |
+        pnpm exec nx-cloud record -- pnpm exec nx format:check
+      parallel-commands-on-agents: |
+        pnpm exec nx affected --target=lint --parallel=3
+        pnpm exec nx affected --target=test --parallel=3 --ci --code-coverage
+        pnpm exec nx affected --target=build --parallel=3
+
+  agents:
+    name: Boostrap Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11.3
+    with:
+      number-of-agents: 3
+
+  release:
+    needs: [quality-assure]
+    name: Release
+    uses: cuneos/workspace/.github/workflows/release.yml@main
+    secrets:
+      RELEASE_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
