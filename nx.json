@@ -42,7 +42,6 @@
       "unitTestRunner": "vitest"
     }
   },
-  "defaultProject": "core",
   "namedInputs": {
     "default": ["{projectRoot}/**/*"],
     "production": [
